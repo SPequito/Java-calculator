@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package calculator.frame;
-
 /**
  *
  * @author stefa
@@ -47,12 +46,6 @@ public class CalculatorFrame extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -314,11 +307,13 @@ public class CalculatorFrame extends javax.swing.JFrame {
     
     private void jButtonDotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDotActionPerformed
         
-        //we get the getText and use method .contains to see if we all read have . and our number. WE ONLY WANT 1 .(dot)
-        if (!jTextField1.getText().contains(".")){
-            jTextField1.setText(jTextField1.getText() + ".");
-        } 
+        //wend we press the dot botton we get the getText and use method .contains to see if we all ready have a dot, if dont have have e print one,next if we want another decimal num after press +/-x we need to put a new dot
  
+        
+        if (!jTextField1.getText().contains(".") || (jTextField1.getText().contains("+") && !jTextField1.getText().contains(".")) || jTextField1.getText().contains("-") || jTextField1.getText().contains("x") || jTextField1.getText().contains("/")){
+            jTextField1.setText(jTextField1.getText() + ".");
+        }
+        
     }//GEN-LAST:event_jButtonDotActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -394,10 +389,6 @@ public class CalculatorFrame extends javax.swing.JFrame {
         math.calculate(jTextField1.getText());
         jTextField1.setText(math.getnum());
     }//GEN-LAST:event_jButtonFinalActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
  public void setFiel(String resolte){
       jTextField1.setText(resolte);

@@ -5,48 +5,46 @@
 package calculator.Math;
 
 import java.util.Arrays;
-import java.util.stream.IntStream;
 
 /**
- *
  * @author stefa
  */
 public class Math {
     
- private Integer numC;  
+ private double numC;  
     
  public void calculate(String value){
    
-     String[] numcalcul = value.split("[+-/x]");
+     String[] numcalcul = value.split("[/x+-]");
      System.out.println(Arrays.toString(numcalcul));
-     
      int size = numcalcul.length;
-     System.out.println(size);
-    
-     int[] arrInt = new int[size];    
+     
+     double[] arrInt = new double[size];    
+     
      for(int i=0; i<size; i++) {
-         arrInt[i] = Integer.parseInt(numcalcul[i]);    
-      }
+         arrInt[i] = Double.parseDouble(numcalcul[i]);    
+     }
 
-    if (value.contains("+"))
-    {  
-        Integer sum1 = IntStream.of(arrInt).sum();
-        numC = sum1;
+     if (value.contains("+")) {
+         double result = arrInt[0];
+         for (int i = 1; i < arrInt.length; i++) {
+             result += arrInt[i];
+         }
+         numC = result;
 
      }
-      if (value.contains("-"))
-    {  
-        int result = arrInt[0];
-        for (int i = 1; i < arrInt.length; i++) {
-            result -= arrInt[i];            
-        }
-        numC = result;
+     if (value.contains("-")) {
+         double result = arrInt[0];
+         for (int i = 1; i < arrInt.length; i++) {
+             result -= arrInt[i];
+         }
+         numC = result;
 
      }
       
        if (value.contains("/"))
     {  
-        int result = arrInt[0];
+        double result = arrInt[0];
         for (int i = 1; i < arrInt.length; i++) {
             result /= arrInt[i];            
         }
@@ -55,7 +53,7 @@ public class Math {
      }
         if (value.contains("x"))
     {  
-        int result = arrInt[0];
+        double result = arrInt[0];
         for (int i = 1; i < arrInt.length; i++) {
             result *= arrInt[i];            
         }
@@ -66,7 +64,7 @@ public class Math {
 }
   public String getnum(){
   
-      return numC.toString();
+      return String.valueOf(numC);
 
   };
 }
